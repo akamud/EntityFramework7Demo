@@ -16,10 +16,11 @@ namespace EntityFramework6Demo.Controllers
             var db = new BloggingEntities();
 
             int id = 1;
-            var query = db.Blog.Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
+            //var query = db.Blog.Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
             //var query = db.Blog.Include(b => b.Post).Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
             //var query = db.Blog.Include(b => b.Post).Where(b => b.BlogId == id && b.Post.Any(p => p.Title == "Teste")).OrderByDescending(b => b.Url);
             //var query = db.Blog.Include(b => b.Post).Where(b => b.BlogId == id).OrderByDescending(b => b.Url).Skip(1).Take(10);
+            var query = db.Blog.Where(b => b.BlogId == id).OrderByDescending(b => b.Url).Skip(1).Take(10);
 
             var lista = await query.ToListAsync();
 

@@ -28,9 +28,11 @@ namespace EntityFramework7Demo.Controllers
                     new ConsoleTraceListener()));
 
             int id = 1;
-            var query = db.Blogs.Include(b => b.Posts).Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
+            //var query = db.Blogs.Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
+            //var query = db.Blogs.Include(b => b.Posts).Where(b => b.BlogId == id).OrderByDescending(b => b.Url);
             //var query = db.Blogs.Include(b => b.Posts).Where(b => b.BlogId == id && b.Posts.Any(p => p.Title == "Teste")).OrderByDescending(b => b.Url);
-            //var query = db.Blogs.Include(b => b.Posts).Where(b => b.BlogId == id).OrderByDescending(b => b.Url).Skip(1).Take(10);
+            //var query = db.Blogs.Include(b => b.Posts).Where(b => b.BlogId == id).OrderByDescending(b => b.Url).Skip(0).Take(10);
+            var query = db.Blogs.Where(b => b.BlogId == id).OrderByDescending(b => b.Url).Skip(0).Take(10);
 
             var lista = await query.ToListAsync();
 
